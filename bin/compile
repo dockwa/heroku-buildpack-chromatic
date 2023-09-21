@@ -2,6 +2,10 @@
 
 BUILD_DIR=$1
 
-cd $BUILD_DIR
+echo 'chromatic-compile'
 
-yarn chromatic --project-token=$CHROMATIC_TOKEN --ci
+CHROMATIC_TOKEN=$(cat $3/CHROMATIC_TOKEN)
+
+cd $1
+
+yarn chromatic --project-token=$CHROMATIC_TOKEN --storybook-build-dir=storybook --ci
